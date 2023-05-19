@@ -4,7 +4,7 @@ use anyhow::bail;
 use anyhow::Context;
 use axum::extract::Path;
 use axum::extract::State;
-use axum::http::{Method, HeaderValue};
+use axum::http::{HeaderValue, Method};
 use axum::response::IntoResponse;
 use axum::routing::*;
 use axum::Json;
@@ -59,9 +59,11 @@ async fn main() -> anyhow::Result<()> {
         .route("/feeds", get(handle_feeds_get))
         .route("/feeds", post(handle_feed_add))
         .route("/feeds/:id", get(get_feed_entries_for_feed))
-				.layer(CorsLayer::new()
+        .layer(
+            CorsLayer::new()
                 .allow_origin(AllowOrigin::any())
-                .allow_methods([Method::GET, Method::POST]))
+                .allow_methods([Method::GET, Method::POST]),
+        )
         .with_state(app_state);
 
     // Every 10 seconds, run a task for every feed that checks for new posts.
