@@ -4,6 +4,8 @@ A tiny RSS aggregator made with [SQLx](https://github.com/launchbadge/sqlx), [Ru
 ## Motive
 I like to be up-to-date on new blog posts and news. I want to know when I have already read something and I don't want to use any third party services for synchronizing my RSS lists.
 
+Inspired by [miniflux](https://miniflux.app/)
+
 ## Roadmap
 - [ ] Add support for adding feeds from the UI
 - [ ] Authentication
